@@ -239,6 +239,18 @@ def generate_torus( cx, cy, cz, r0, r1, step ):
 
 # NEW CODE
 
+def add_pyramid(polygons, x, y, z, height, width):
+    x1 = x + width
+    y1 = y + height
+    z1 = z - width
+
+    add_polygon(polygons, x, y, z, x, y, z1, x1, y, z1)
+    add_polygon(polygons, x, y, z, x1, y, z, x1, y, z1)
+    add_polygon(polygons, x, y, z, x, y, z1, x + width/2, y1, z-width/2)
+    add_polygon(polygons, x1, y, z1, x1, y, z, x+width/2, y1, z-width/2)
+    add_polygon(polygons, x, y, z1, x1, y, z1, x+width/2, y1, z-width/2)
+    add_polygon(polygons, x1, y, z, x, y, z, x+width/2, y1, z-width/2)
+
 def add_cone(edges, x, y, z, radius, height, step): 
     pass
 
