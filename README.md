@@ -1,5 +1,5 @@
 # Graphics Final Project - The End <br /> 
-<b><i>Jeffrey Weng, Period 10<i><b>
+<b><i>Jeffrey Weng, Period 10</i></b>
 
 ### Task
 <i>Add new primitive shapes to the graphics engine...<i> 
