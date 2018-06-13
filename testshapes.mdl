@@ -37,4 +37,4 @@ rotate x 170
 cylinder 0 0 0 15 200
 pop
 display
-save testshapes.png
+save pinocchio.png
