@@ -239,37 +239,51 @@ def generate_torus( cx, cy, cz, r0, r1, step ):
 
 # NEW CODE
 
-# def generate_cone (x, y, z, radius, height, step): 
-# def generate_cylinder(x, y, z, radius, height, step): 
-
 def add_cone(edges, x, y, z, radius, height, step): 
     pass
-def add_cylinder(edges, x, y, z, radius, height, step): 
+
+
+#The Most Hacky way to make a cylinder....Step has to be set >=275 for this to look right. 
+def add_cylinder(edges, x, y, z, radius, height): 
     bottom_circle = []
     top_circle = []
 
+    custom_step = 275
+
     #add circles
-    add_circle(bottom_circle, x, y, z, radius, step)
-    add_circle(top_circle, x, y, z+height, radius, step)
+    add_circle(bottom_circle, x, y, z, radius, custom_step)
+    add_circle(top_circle, x, y, z+height, radius, custom_step)
 
     #fill circle
-
-
+    for i in range(0, len(bottom_circle) - 1): 
+        i += 1
+        add_polygon(edges,bottom_circle[0][0], bottom_circle[0][1], bottom_circle[0][2],  
+                    bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2], 
+                    bottom_circle[len(bottom_circle)/2 - 1][0], bottom_circle[len(bottom_circle)/2 - 1][1], bottom_circle[len(bottom_circle)/2 - 1][2])
+        add_polygon(edges,bottom_circle[0][0], bottom_circle[0][1], bottom_circle[0][2],  
+                    bottom_circle[len(bottom_circle)/2 - 1][0], bottom_circle[len(bottom_circle)/2 - 1][1], bottom_circle[len(bottom_circle)/2 - 1][2], 
+                    bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2])
+    for i in range(0, len(top_circle) - 1): 
+        i += 1
+        add_polygon(edges,top_circle[0][0], top_circle[0][1], top_circle[0][2],  
+                    top_circle[i][0], top_circle[i][1], top_circle[i][2], 
+                    top_circle[len(top_circle)/2 - 1][0], top_circle[len(top_circle)/2 - 1][1], top_circle[len(top_circle)/2 - 1][2])
+        add_polygon(edges,top_circle[0][0], top_circle[0][1], top_circle[0][2],  
+                    top_circle[len(top_circle)/2 - 1][0], top_circle[len(top_circle)/2 - 1][1], top_circle[len(top_circle)/2 - 1][2], 
+                    top_circle[i][0], top_circle[i][1], top_circle[i][2]) 
     #connect them 
 
-    #HAS TO BE ROTATED ON THE X
+    #WHEN ROTATED ON THE -X
+    #makes the triangle with point down and the base on top
+    step_c = 1
+    for i in range(0, len(bottom_circle) - step_c, step_c): 
+        add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
+                      bottom_circle[i][2], top_circle[i + step_c][0], top_circle[i + step_c][1], top_circle[i + step_c][2])
 
     #makes the triangle with point up and the base on bottom 
-    for i in range(0, len(bottom_circle) - 5): 
-        add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
-                      bottom_circle[i][2], top_circle[i + 5][0], top_circle[i + 5][1], top_circle[i + 5][2])
-    
-
-    #makes the triangle with point down and the base on top
-    # for i in range(0, len(bottom_circle) - 5):
-    #     add_polygon(edges,bottom_circle[i + 5][0], bottom_circle[i + 5][1], bottom_circle[i + 5][2], top_circle[i + 5][0], top_circle[i + 5][1],
-    #                 top_circle[i + 5][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2])              
-    #     i += 5
+    for i in range(0, len(bottom_circle) - step_c, step_c):
+        add_polygon(edges,bottom_circle[i + step_c][0], bottom_circle[i + step_c][1], bottom_circle[i + step_c][2], top_circle[i + step_c][0], top_circle[i + step_c][1],
+                    top_circle[i + step_c][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2])              
 
 
 # NEW CODE
