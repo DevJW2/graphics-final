@@ -237,6 +237,44 @@ def generate_torus( cx, cy, cz, r0, r1, step ):
             points.append([x, y, z])
     return points
 
+# NEW CODE
+
+# def generate_cone (x, y, z, radius, height, step): 
+# def generate_cylinder(x, y, z, radius, height, step): 
+
+def add_cone(edges, x, y, z, radius, height, step): 
+    pass
+def add_cylinder(edges, x, y, z, radius, height, step): 
+    bottom_circle = []
+    top_circle = []
+
+    #add circles
+    add_circle(bottom_circle, x, y, z, radius, step)
+    add_circle(top_circle, x, y, z+height, radius, step)
+
+    #fill circle
+
+
+    #connect them 
+
+    #HAS TO BE ROTATED ON THE X
+
+    #makes the triangle with point up and the base on bottom 
+    for i in range(0, len(bottom_circle) - 5): 
+        add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
+                      bottom_circle[i][2], top_circle[i + 5][0], top_circle[i + 5][1], top_circle[i + 5][2])
+    
+
+    #makes the triangle with point down and the base on top
+    # for i in range(0, len(bottom_circle) - 5):
+    #     add_polygon(edges,bottom_circle[i + 5][0], bottom_circle[i + 5][1], bottom_circle[i + 5][2], top_circle[i + 5][0], top_circle[i + 5][1],
+    #                 top_circle[i + 5][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2])              
+    #     i += 5
+
+
+# NEW CODE
+
+
 def add_circle( points, cx, cy, cz, r, step ):
     x0 = r + cx
     y0 = cy

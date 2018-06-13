@@ -171,6 +171,20 @@ def run(filename):
                 matrix_mult( stack[-1], tmp )
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
                 tmp = []
+            #NEW CODE
+            elif c == 'cone': 
+                add_cone(tmp, 
+                        args[0], args[1], args[2], args[3], args[4], step_3d)
+                matrix_mult(stack[-1], tmp)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                tmp = []
+            elif c == 'cylinder': 
+                add_cylinder(tmp, 
+                            args[0], args[1], args[2], args[3], args[4], step_3d)
+                matrix_mult(stack[-1], tmp)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                tmp = []
+            #NEW CODE
             elif c == 'line':
                 if isinstance(args[0], str):
                     consts = args[0]
