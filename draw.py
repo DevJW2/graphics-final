@@ -336,19 +336,23 @@ def add_hourglass(edges, x, y, z, radius, outer_radius, height):
     bottom_circle = []
     top_circle = []
 
-    other_bottom_circle = []
-    other_top_circle = []
+    # other_bottom_circle = []
+    # other_top_circle = []
 
-    custom_step = 275
+    middle_circle = []
+
+    custom_step = 375
 
     #add circles
     if(radius > outer_radius):
 
-        add_circle(bottom_circle, x, y, z, outer_radius, custom_step) #on the bottom if you rotate x by 90 
+        add_circle(bottom_circle, x, y, z, radius, custom_step) #on the bottom if you rotate x by 90 
         add_circle(top_circle, x, y, z+height, radius, custom_step)
+        add_circle(middle_circle, x, y, z + height/2, outer_radius, custom_step)
 
-        add_circle(other_bottom_circle, x, y, z, outer_radius, custom_step)
-        add_circle(other_top_circle, x, y, z-height, radius, custom_step)
+
+        # add_circle(other_bottom_circle, x, y, z, outer_radius, custom_step)
+        # add_circle(other_top_circle, x, y, z-height, radius, custom_step)
     else: 
         print("NOT A HOURGLASS")
         exit(0)
@@ -370,23 +374,34 @@ def add_hourglass(edges, x, y, z, radius, outer_radius, height):
         add_polygon(edges,top_circle[0][0], top_circle[0][1], top_circle[0][2],  
                     top_circle[len(top_circle)/2 - 1][0], top_circle[len(top_circle)/2 - 1][1], top_circle[len(top_circle)/2 - 1][2], 
                     top_circle[i][0], top_circle[i][1], top_circle[i][2]) 
+    # for i in range(0, len(middle_circle) - 1):
+    #     i += 1
+    #     add_polygon(edges,middle_circle[0][0], middle_circle[0][1], middle_circle[0][2],  
+    #                 middle_circle[i][0], middle_circle[i][1], middle_circle[i][2], 
+    #                 middle_circle[len(middle_circle)/2 - 1][0], middle_circle[len(middle_circle)/2 - 1][1], middle_circle[len(middle_circle)/2 - 1][2])
+    #     add_polygon(edges,middle_circle[0][0], middle_circle[0][1], middle_circle[0][2],  
+    #                 middle_circle[len(middle_circle)/2 - 1][0], middle_circle[len(middle_circle)/2 - 1][1], middle_circle[len(middle_circle)/2 - 1][2], 
+    #                 middle_circle[i][0], middle_circle[i][1], middle_circle[i][2]) 
+    
 
-    for i in range(0, len(other_bottom_circle) - 1): 
-        i += 1
-        add_polygon(edges,other_bottom_circle[0][0], other_bottom_circle[0][1], other_bottom_circle[0][2],  
-                    other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2], 
-                    other_bottom_circle[len(other_bottom_circle)/2 - 1][0], other_bottom_circle[len(other_bottom_circle)/2 - 1][1], other_bottom_circle[len(other_bottom_circle)/2 - 1][2])
-        add_polygon(edges,other_bottom_circle[0][0], other_bottom_circle[0][1], other_bottom_circle[0][2],  
-                    other_bottom_circle[len(other_bottom_circle)/2 - 1][0], other_bottom_circle[len(other_bottom_circle)/2 - 1][1], other_bottom_circle[len(other_bottom_circle)/2 - 1][2], 
-                    other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2])
-    for i in range(0, len(other_top_circle) - 1): 
-        i += 1
-        add_polygon(edges,other_top_circle[0][0], other_top_circle[0][1], other_top_circle[0][2],  
-                    other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2], 
-                    other_top_circle[len(other_top_circle)/2 - 1][0], other_top_circle[len(other_top_circle)/2 - 1][1], other_top_circle[len(other_top_circle)/2 - 1][2])
-        add_polygon(edges,other_top_circle[0][0], other_top_circle[0][1], other_top_circle[0][2],  
-                    other_top_circle[len(other_top_circle)/2 - 1][0], other_top_circle[len(other_top_circle)/2 - 1][1], other_top_circle[len(other_top_circle)/2 - 1][2], 
-                    other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2])    
+    # for i in range(0, len(other_bottom_circle) - 1): 
+    #     i += 1
+    #     add_polygon(edges,other_bottom_circle[0][0], other_bottom_circle[0][1], other_bottom_circle[0][2],  
+    #                 other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2], 
+    #                 other_bottom_circle[len(other_bottom_circle)/2 - 1][0], other_bottom_circle[len(other_bottom_circle)/2 - 1][1], other_bottom_circle[len(other_bottom_circle)/2 - 1][2])
+    #     add_polygon(edges,other_bottom_circle[0][0], other_bottom_circle[0][1], other_bottom_circle[0][2],  
+    #                 other_bottom_circle[len(other_bottom_circle)/2 - 1][0], other_bottom_circle[len(other_bottom_circle)/2 - 1][1], other_bottom_circle[len(other_bottom_circle)/2 - 1][2], 
+    #                 other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2])
+    # for i in range(0, len(other_top_circle) - 1): 
+    #     i += 1
+    #     add_polygon(edges,other_top_circle[0][0], other_top_circle[0][1], other_top_circle[0][2],  
+    #                 other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2], 
+    #                 other_top_circle[len(other_top_circle)/2 - 1][0], other_top_circle[len(other_top_circle)/2 - 1][1], other_top_circle[len(other_top_circle)/2 - 1][2])
+    #     add_polygon(edges,other_top_circle[0][0], other_top_circle[0][1], other_top_circle[0][2],  
+    #                 other_top_circle[len(other_top_circle)/2 - 1][0], other_top_circle[len(other_top_circle)/2 - 1][1], other_top_circle[len(other_top_circle)/2 - 1][2], 
+    #                 other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2])    
+
+
     
 
     #connect them 
@@ -394,23 +409,41 @@ def add_hourglass(edges, x, y, z, radius, outer_radius, height):
     #WHEN ROTATED ON THE -X
     #makes the triangle with point down and the base on top
     step_c = 1
+    # for i in range(0, len(bottom_circle) - step_c, step_c): 
+    #     add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
+    #                   bottom_circle[i][2], top_circle[i + step_c][0], top_circle[i + step_c][1], top_circle[i + step_c][2])
+    
     for i in range(0, len(bottom_circle) - step_c, step_c): 
-        add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
-                      bottom_circle[i][2], top_circle[i + step_c][0], top_circle[i + step_c][1], top_circle[i + step_c][2])
-
-    #makes the triangle with point up and the base on bottom 
+        add_polygon(edges, top_circle[i][0], top_circle[i][1], top_circle[i][2], middle_circle[i][0], middle_circle[i][1],
+                      middle_circle[i][2], top_circle[i + step_c][0], top_circle[i + step_c][1], top_circle[i + step_c][2])
+    
     for i in range(0, len(bottom_circle) - step_c, step_c):
-        add_polygon(edges,bottom_circle[i + step_c][0], bottom_circle[i + step_c][1], bottom_circle[i + step_c][2], top_circle[i + step_c][0], top_circle[i + step_c][1],
-                    top_circle[i + step_c][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2]) 
-
-    for i in range(0, len(other_bottom_circle) - step_c, step_c): 
-        add_polygon(edges, other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2], other_bottom_circle[i][0], other_bottom_circle[i][1],
-                      other_bottom_circle[i][2], other_top_circle[i + step_c][0], other_top_circle[i + step_c][1], other_top_circle[i + step_c][2])
+         add_polygon(edges,middle_circle[i + step_c][0], middle_circle[i + step_c][1], middle_circle[i + step_c][2], top_circle[i + step_c][0], top_circle[i + step_c][1],
+                     top_circle[i + step_c][2],middle_circle[i][0], middle_circle[i][1], middle_circle[i][2]) 
+    
 
     #makes the triangle with point up and the base on bottom 
-    for i in range(0, len(other_bottom_circle) - step_c, step_c):
-        add_polygon(edges,other_bottom_circle[i + step_c][0], other_bottom_circle[i + step_c][1], other_bottom_circle[i + step_c][2], other_top_circle[i + step_c][0], other_top_circle[i + step_c][1],
-                    other_top_circle[i + step_c][2],other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2])     
+    # for i in range(0, len(bottom_circle) - step_c, step_c):
+    #     add_polygon(edges,bottom_circle[i + step_c][0], bottom_circle[i + step_c][1], bottom_circle[i + step_c][2], top_circle[i + step_c][0], top_circle[i + step_c][1],
+    #                 top_circle[i + step_c][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2]) 
+
+    for i in range(0, len(bottom_circle) - step_c, step_c): 
+        add_polygon(edges, middle_circle[i][0], middle_circle[i][1], middle_circle[i][2], bottom_circle[i][0], bottom_circle[i][1],
+                      bottom_circle[i][2], middle_circle[i + step_c][0], middle_circle[i + step_c][1], middle_circle[i + step_c][2])
+
+    for i in range(0, len(bottom_circle) - step_c, step_c):
+         add_polygon(edges,bottom_circle[i + step_c][0], bottom_circle[i + step_c][1], bottom_circle[i + step_c][2], middle_circle[i + step_c][0], middle_circle[i + step_c][1],
+                     middle_circle[i + step_c][2],bottom_circle[i][0], bottom_circle[i][1], bottom_circle[i][2]) 
+
+
+    # for i in range(0, len(other_bottom_circle) - step_c, step_c): 
+    #     add_polygon(edges, other_top_circle[i][0], other_top_circle[i][1], other_top_circle[i][2], other_bottom_circle[i][0], other_bottom_circle[i][1],
+    #                   other_bottom_circle[i][2], other_top_circle[i + step_c][0], other_top_circle[i + step_c][1], other_top_circle[i + step_c][2])
+
+    # #makes the triangle with point up and the base on bottom 
+    # for i in range(0, len(other_bottom_circle) - step_c, step_c):
+    #     add_polygon(edges,other_bottom_circle[i + step_c][0], other_bottom_circle[i + step_c][1], other_bottom_circle[i + step_c][2], other_top_circle[i + step_c][0], other_top_circle[i + step_c][1],
+    #                 other_top_circle[i + step_c][2],other_bottom_circle[i][0], other_bottom_circle[i][1], other_bottom_circle[i][2])     
     
 
 
