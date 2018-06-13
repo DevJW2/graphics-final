@@ -254,6 +254,11 @@ def add_pyramid(polygons, x, y, z, height, width):
 def add_cone(edges, x, y, z, radius, height, step): 
     pass
 
+def add_truncatedcone(edges, x, y, z, radius, outer_radius, height, step):
+    pass
+def add_hourglass(edges, x, y, z, radius, outer_radius, height, step): 
+    pass
+
 
 #The Most Hacky way to make a cylinder....Step has to be set >=275 for this to look right. 
 def add_cylinder(edges, x, y, z, radius, height): 

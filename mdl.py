@@ -16,6 +16,8 @@ tokens = (
     "CONE",
     "CYLINDER",
     "PYRAMID",
+    "TRUNCATEDCONE",
+    "HOURGLASS",
     "SPHERE",
     "BOX", 
     "LINE", 
@@ -58,6 +60,8 @@ reserved = {
     "cone" : "CONE",
     "cylinder" : "CYLINDER", 
     "pyramid" : "PYRAMID",
+    "hourglass" : "HOURGLASS",
+    "truncatedcone" : "TRUNCATEDCONE",
     "sphere" : "SPHERE",
     "box" : "BOX",
     "line" : "LINE",
@@ -251,6 +255,40 @@ def p_command_pyramid(p):
     if len(p) == 9 and isinstance(p[8], str):
         cmd['cs'] = p[8]
     cmd['args'] = p[arg_start:arg_start+5]
+    commands.append(cmd)
+
+def p_command_truncatedcone(p): 
+    """command : TRUNCATEDCONE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER
+                | TRUNCATEDCONE NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER SYMBOL
+                | TRUNCATEDCONE SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER
+                | TRUNCATEDCONE SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER SYMBOL"""  
+    cmd = {'op' : p[1], 'constants' : None, 'cs' : None, 'args':[]}
+    arg_start = 2
+    if isinstance(p[2], str):
+        cmd['constants'] = p[2]
+        arg_start = 3
+    if len(p) == 9 and isinstance(p[8], str):
+        cmd['cs'] = p[8]
+    if len(p) == 10 and isinstance(p[9], str):
+        cmd['cs'] = p[9]
+    cmd['args'] = p[arg_start:arg_start+6]
+    commands.append(cmd)
+
+def p_command_hourglass(p): 
+    """command : HOURGLASS NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER
+                | HOURGLASS NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER SYMBOL
+                | HOURGLASS SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER
+                | HOURGLASS SYMBOL NUMBER NUMBER NUMBER NUMBER NUMBER NUMBER SYMBOL"""  
+    cmd = {'op' : p[1], 'constants' : None, 'cs' : None, 'args':[]}
+    arg_start = 2
+    if isinstance(p[2], str):
+        cmd['constants'] = p[2]
+        arg_start = 3
+    if len(p) == 9 and isinstance(p[8], str):
+        cmd['cs'] = p[8]
+    if len(p) == 10 and isinstance(p[9], str):
+        cmd['cs'] = p[9]
+    cmd['args'] = p[arg_start:arg_start+6]
     commands.append(cmd)
 #NEW CODE
 

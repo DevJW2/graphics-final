@@ -189,7 +189,19 @@ def run(filename):
                             args[0], args[1], args[2], args[3], args[4])
                 matrix_mult(stack[-1], tmp)
                 draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
-                tmp = []              
+                tmp = []  
+            elif c == 'truncatedcone': 
+                add_truncatedcone(tmp,
+                            args[0], args[1], args[2], args[3], args[4], args[5], step_3d)
+                matrix_mult(stack[-1], tmp)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                tmp = []  
+            elif c == 'hourglass': 
+                add_hourglass(tmp,
+                            args[0], args[1], args[2], args[3], args[4], args[5], step_3d)
+                matrix_mult(stack[-1], tmp)
+                draw_polygons(tmp, screen, zbuffer, view, ambient, light, areflect, dreflect, sreflect)
+                tmp = []             
             #NEW CODE
             elif c == 'line':
                 if isinstance(args[0], str):
