@@ -1,13 +1,9 @@
 # Graphics Final Project - The End <br /> 
 <b><i>Jeffrey Weng, Period 10</i></b>
 
-<b>Task</b>: <i>Add new primitive shapes to the graphics engine...</i> 
-  1. Hourglass
-  2. Pyramid
-  3. Cylinder
-  4. Cone
-  5. Truncated Cone 
+<img src= "https://github.com/DevJW2/plasma/blob/master/city.png" width="300" height="300"> <img src= "https://github.com/DevJW2/plasma/blob/master/pinocchio.png" width = "300" height="300">
 
+![](gallery.gif)
 
 
 
